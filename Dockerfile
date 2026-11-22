@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install all dependencies for build
-RUN npm ci
+RUN npm install
 
 # Copy application source code
 COPY . .
@@ -25,7 +25,7 @@ ENV PORT=10000
 
 # Copy production dependencies and built assets
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 
 # Install tsx globally or locally so server.ts can execute
 RUN npm install -g tsx
